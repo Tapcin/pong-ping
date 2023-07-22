@@ -18,15 +18,15 @@ class GameSprite(sprite.Sprite):
 class Player(GameSprite):
     def update_l(self):
         keys = key.get_pressed()
-        if keys[K_UP] and self.rect.x > 5:
+        if keys[K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_DOWN] and self.rect.x < win_height - 80:
+        if keys[K_DOWN] and self.rect.y < win_height - 80:
             self.rect.y += self.speed
     def update_r(self):
         keys = key.get_pressed()
-        if keys[K_w] and self.rect.x > 5:
+        if keys[K_u] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_s] and self.rect.x < win_height - 80:
+        if keys[K_j] and self.rect.y < win_height - 80:
             self.rect.y += self.speed
 
 back = (200, 255, 255)
@@ -38,7 +38,7 @@ window.fill(back)
 gameee = True
 finish = False
 clock = time.Clock()
-FPS = 144
+FPS = 30
 
 rt1 = Player('venic.png', 30, 200, 50, 150, 5)
 rt2 = Player('venic.png', 520, 200, 50, 150, 5)
@@ -77,7 +77,7 @@ while gameee:
         
         if ball.rect.x > win_width:
             finish = True
-            window.blit(lose1, (200, 200))
+            window.blit(lose2, (200, 200))
             gameee_over = True
 
         rt1.reset()
